@@ -1,0 +1,51 @@
+<?php
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use Laravel\Socialite\Facades\Socialite;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
+//authentication
+Route::post('auth/register', [AuthController::class, 'register']);
+Route::post('auth/login', [AuthController::class, 'login']);
+Route::post('auth/login-email', [AuthController::class, 'loginWithEmail']);
+
+//verifikasi otp
+Route::post('auth/verify-otp', [AuthController::class, 'verifyOtp']);
+
+// Password Reset
+Route::post('/password/forgot', [AuthController::class, 'forgotPassword']);
+Route::post('/password/reset', [AuthController::class, 'resetPassword']);
+
+//Google Login
+Route::get('auth/google/redirect', function () {
+    return Socialite::driver('google')->stateless()->redirect();
+});
+
+Route::get('auth/google/callback', function () {
+    $googleUser = Socialite::driver('google')->stateless()->user();
+
+    $user = User::updateOrCreate(
+        ['email' => $googleUser->getEmail()],
+        [
+            'name'      => $googleUser->getName(),
+            'google_id' => $googleUser->getId(),
+            'avatar'    => $googleUser->getAvatar(),
+        ]
+    );
+
+    Auth::login($user);
+
+    return response()->json([
+        'message' => 'Login berhasil',
+        'user'    => $user
+    ]);
+});
+
+// Protected (butuh login Sanctum)
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/auth/logout', [AuthController::class, 'logout']);
+    Route::get('/me', fn (Request $request) => $request->user());
+});
