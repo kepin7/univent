@@ -224,6 +224,33 @@ class AuthController extends Controller
         return response()->json(['message' => 'Password berhasil direset']);
     }
 
+    public function resendOtp(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+        ]);
+
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user) {
+            return response()->json(['message' => 'User tidak ditemukan'], 404);
+        }
+
+        // Generate OTP baru
+        $otp = rand(100000, 999999);
+        $user->otp_code = $otp;
+        $user->otp_expires_at = now()->addMinutes(5);
+        $user->save();
+
+        // Kirim OTP via email
+        Mail::to($user->email)->send(new SendOtpMail($otp));
+
+        return response()->json([
+            'message' => 'Kode OTP baru telah dikirim ke email Anda',
+            'email'   => $user->email,
+        ]);
+    }
+
     //Logout
     public function logout(Request $request)
     {
