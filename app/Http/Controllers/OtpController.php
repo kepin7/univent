@@ -21,8 +21,8 @@ class OtpController extends Controller
         // Simpan OTP ke cache sementara (5 menit)
         Cache::put('otp_' . $request->email, $otp, now()->addMinutes(5));
 
-        // Kirim email OTP (queued)
-        Mail::to($request->email)->queue(new SendOtpMail($otp));
+        // Kirim email OTP
+        Mail::to($request->email)->send(new SendOtpMail($otp));
 
         return response()->json([
             'message' => 'Kode OTP sudah dikirim ke email Anda'

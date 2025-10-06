@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use Laravel\Socialite\Facades\Socialite;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,32 +25,19 @@ Route::post('/password/forgot', [AuthController::class, 'forgotPassword']);
 Route::post('/password/reset', [AuthController::class, 'resetPassword']);
 
 //Google Login
-Route::get('auth/google/redirect', function () {
-    return Socialite::driver('google')->stateless()->redirect();
-});
-
-Route::get('auth/google/callback', function () {
-    $googleUser = Socialite::driver('google')->stateless()->user();
-
-    $user = User::updateOrCreate(
-        ['email' => $googleUser->getEmail()],
-        [
-            'name'      => $googleUser->getName(),
-            'google_id' => $googleUser->getId(),
-            'avatar'    => $googleUser->getAvatar(),
-        ]
-    );
-
-    Auth::login($user);
-
-    return response()->json([
-        'message' => 'Login berhasil',
-        'user'    => $user
-    ]);
-});
+Route::get('auth/google/redirect', [AuthController::class, 'redirectToGoogle']);
+Route::get('auth/google/callback', [AuthController::class, 'handleGoogleCallback']);
 
 // Protected (butuh login Sanctum)
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/auth/logout', [AuthController::class, 'logout']);
     Route::get('/me', fn (Request $request) => $request->user());
+});
+
+Route::middleware(['auth:sanctum', 'checkTokenExpiry', 'admin'])->group(function () {
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->middleware('admin');
+});
+
+Route::middleware(['auth:sanctum', 'checkTokenExpiry'])->group(function () {
+    Route::get('/user/dashboard', [UserController::class, 'dashboard']);
 });
