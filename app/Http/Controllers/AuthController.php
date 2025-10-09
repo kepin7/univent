@@ -42,6 +42,11 @@ class AuthController extends Controller
         return $this->authService->handleGoogleCallback();
     }
 
+    public function logoutGoogle(Request $request)
+    {
+        return $this->authService->logoutGoogle($request);
+    }
+
     public function verifyOtp(Request $request)
     {
         $request->validate([
@@ -61,7 +66,7 @@ class AuthController extends Controller
     {
         $request->validate([
             'email' => 'required|email',
-            'token' => 'required',
+            'otp' => 'required|string|size:6',
             'password' => 'required|min:6|confirmed'
         ]);
         return $this->authService->resetPassword($request);

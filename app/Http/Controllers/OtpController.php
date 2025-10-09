@@ -9,19 +9,16 @@ use Illuminate\Support\Facades\Cache;
 
 class OtpController extends Controller
 {
-    // Kirim OTP ke email
     public function sendOtp(Request $request)
     {
         $request->validate([
             'email' => 'required|email',
         ]);
 
-        $otp = rand(100000, 999999); // generate 6 digit OTP
+        $otp = rand(100000, 999999); 
 
-        // Simpan OTP ke cache sementara (5 menit)
         Cache::put('otp_' . $request->email, $otp, now()->addMinutes(5));
 
-        // Kirim email OTP
         Mail::to($request->email)->send(new SendOtpMail($otp));
 
         return response()->json([
@@ -29,7 +26,6 @@ class OtpController extends Controller
         ]);
     }
 
-    // Verifikasi OTP
     public function verifyOtp(Request $request)
     {
         $request->validate([
@@ -47,7 +43,6 @@ class OtpController extends Controller
             return response()->json(['message' => 'OTP salah'], 400);
         }
 
-        // OTP benar maka akan hapus OTP dari cache
         Cache::forget('otp_' . $request->email);
 
         return response()->json(['message' => 'OTP valid']);

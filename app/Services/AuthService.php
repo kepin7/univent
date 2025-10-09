@@ -16,7 +16,7 @@ class AuthService
     {
         $this->otpService = $otpService;
     }
-    
+
     //register
     public function register(Request $request)
     {
@@ -24,12 +24,12 @@ class AuthService
             'name'     => explode('@', $request->email)[0],
             'email'    => $request->email,
             'password' => bcrypt($request->password),
-            'role'     => 'user',
+            'is_active'=> false,
         ]);
 
         $user->assignRole('user');
 
-        // gunakan OtpService
+        // kirim OTP
         $this->otpService->generateAndSend($user);
 
         return response()->json([
@@ -38,7 +38,7 @@ class AuthService
         ], 201);
     }
 
-    //Login email
+    //login email
     public function loginWithEmail(Request $request)
     {
         $user = User::where('email', $request->email)->first();
@@ -56,9 +56,14 @@ class AuthService
         ]);
     }
 
-    //Verifikasi OTP
+    ///verikasi otp
     public function verifyOtp(Request $request)
     {
+        $request->validate([
+            'email' => 'required|email',
+            'otp'   => 'required|digits:6',
+        ]);
+
         $user = User::where('email', $request->email)->first();
 
         if (!$user) {
@@ -66,22 +71,18 @@ class AuthService
         }
 
         if (!$this->otpService->verify($user, $request->otp)) {
-            return response()->json(['message' => 'OTP salah atau kadaluarsa'], 400);
+            return response()->json(['message' => 'OTP tidak valid atau sudah kadaluarsa'], 400);
         }
 
-        // Reset setelah valid
+        // OTP valid -> reset OTP & aktifkan user
         $this->otpService->reset($user);
 
-        // Set email verified
-        $user->update(['email_verified_at' => now()]);
+        $user->email_verified_at = now();
+        $user->is_active = true;
+        $user->save();
 
-        // Buat token
-        $tokenResult = $user->createToken('auth_token', ['*']);
-        $token = $tokenResult->plainTextToken;
-
-        $user->tokens()->where('id', explode('|', $token)[0])->update([
-            'expires_at' => now()->addHours(2)
-        ]);
+        // Buat token Sanctum valid 2 jam
+        $token = $user->createToken('API Token', [], now()->addHours(2))->plainTextToken;
 
         return response()->json([
             'message'    => 'Login berhasil',
@@ -96,34 +97,74 @@ class AuthService
         ]);
     }
 
-    //Login Google
+    //login google
     public function redirectToGoogle()
     {
         return Socialite::driver('google')->stateless()->redirect();
-
     }
 
     public function handleGoogleCallback()
     {
-        $googleUser = Socialite::driver('google')->stateless()->user();
+        try {
+            $googleUser = Socialite::driver('google')->stateless()->user();
 
-        // Cek apakah email sudah ada
-        $user = User::updateOrCreate(
-            ['email' => $googleUser->getEmail()],
-            [
-                'name'      => $googleUser->getName(),
-                'google_id' => $googleUser->getId(),
-                'avatar'    => $googleUser->getAvatar(),
-                'password'  => bcrypt(str()->random(16)), // jaga-jaga biar tidak null
-            ]
-        );
+            // Cari user di DB berdasarkan email
+            $user = User::where('email', $googleUser->getEmail())->first();
 
-        $token = $user->createToken('API Token')->plainTextToken;
+            if (!$user) {
+                // Buat user baru
+                $user = User::create([
+                    'name'              => $googleUser->getName(),
+                    'email'             => $googleUser->getEmail(),
+                    'google_id'         => $googleUser->getId(),
+                    'avatar'            => $googleUser->getAvatar(),
+                    'password'          => bcrypt(str()->random(16)),
+                    'email_verified_at' => now(),
+                    'is_active'         => true,
+                ]);
+                $user->assignRole('user');
+            } else {
+                // Update data user lama
+                $user->google_id = $googleUser->getId();   
+                $user->avatar    = $googleUser->getAvatar();
+                if (is_null($user->email_verified_at)) {
+                    $user->email_verified_at = now();
+                }
+                $user->is_active = true;
+                $user->save();
+            }
+
+            // Buat token Sanctum
+            $token = $user->createToken('API Token')->plainTextToken;
+
+            return response()->json([
+                'message'    => 'Login berhasil',
+                'token'      => $token,
+                'expires_at' => now()->addHours(2)->toDateTimeString(),
+                'user'       => [
+                    'id'    => $user->id,
+                    'name'  => $user->name,
+                    'email' => $user->email,
+                    'roles' => $user->getRoleNames(),
+                ]
+            ]);
+
+        } catch (\Exception $e) {
+            return response()->json([
+                'status'  => 'error',
+                'message' => 'Login Google gagal',
+                'error'   => $e->getMessage(),
+            ], 500);
+        }
+    }
+    
+    //logout google
+    public function logoutGoogle(Request $request)
+    {
+        $request->user()->currentAccessToken()->delete();
 
         return response()->json([
-            'message' => 'Login berhasil',
-            'user'    => $user,
-            'token'   => $token,
+            'message' => 'Logout berhasil, token dihapus',
         ]);
     }
 
@@ -135,20 +176,20 @@ class AuthService
             return response()->json(['message' => 'Email tidak ditemukan'], 404);
         }
 
-        $token = rand(100000, 999999);
-        $user->update([
-            'reset_token' => $token,
-            'reset_expires_at' => now()->addMinutes(10),
-        ]);
+        $otp = rand(100000, 999999);
 
-        Mail::raw("Kode reset password Anda adalah: $token", function ($message) use ($user) {
+        $user->otp_code = $otp;
+        $user->otp_expires_at = now()->addMinutes(10);
+        $user->save();
+
+        Mail::raw("Kode reset password Anda adalah: $otp", function ($message) use ($user) {
             $message->to($user->email)->subject('Reset Password');
         });
 
         return response()->json(['message' => 'Kode reset password dikirim ke email Anda']);
     }
 
-    /** RESET PASSWORD */
+    //reset password
     public function resetPassword(Request $request)
     {
         $user = User::where('email', $request->email)->first();
@@ -156,20 +197,19 @@ class AuthService
             return response()->json(['message' => 'User tidak ditemukan'], 404);
         }
 
-        if ($user->reset_token !== $request->token || now()->gt($user->reset_expires_at)) {
-            return response()->json(['message' => 'Token tidak valid atau kadaluarsa'], 400);
+        if ($user->otp_code !== $request->otp || now()->gt($user->otp_expires_at)) {
+            return response()->json(['message' => 'OTP tidak valid atau kadaluarsa'], 400);
         }
 
-        $user->update([
-            'password' => bcrypt($request->password),
-            'reset_token' => null,
-            'reset_expires_at' => null,
-        ]);
+        $user->password = bcrypt($request->password);
+        $user->otp_code = null;
+        $user->otp_expires_at = null;
+        $user->save();
 
         return response()->json(['message' => 'Password berhasil direset']);
     }
 
-    /** RESEND OTP */
+    //resend otp
     public function resendOtp(Request $request)
     {
         $user = User::where('email', $request->email)->first();
@@ -186,7 +226,7 @@ class AuthService
         ]);
     }
 
-    /** LOGOUT */
+    //logout
     public function logout(Request $request)
     {
         $request->user()->currentAccessToken()->delete();

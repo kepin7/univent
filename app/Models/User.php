@@ -12,10 +12,7 @@ use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
-
-    /**
-     * Kolom yang bisa diisi (fillable).
-     */
+    
     protected $fillable = [
         'name',
         'email',
@@ -25,14 +22,11 @@ class User extends Authenticatable implements MustVerifyEmail
         'otp_code',
         'otp_expires_at',
         'is_active',
-        'reset_token',
-        'reset_expires_at',
+        'reset_otp',
+        'reset_otp_expires_at',
         'email_verified_at',
     ];
 
-    /**
-     * Kolom yang disembunyikan saat serialisasi.
-     */
     protected $hidden = [
         'password',
         'remember_token',
@@ -40,9 +34,6 @@ class User extends Authenticatable implements MustVerifyEmail
         'reset_token',
     ];
 
-    /**
-     * Casting kolom ke tipe data tertentu.
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
         'otp_expires_at'    => 'datetime',
@@ -50,9 +41,6 @@ class User extends Authenticatable implements MustVerifyEmail
         'is_active'         => 'boolean',
     ];
 
-    /**
-     * Ambil role user (dari Spatie).
-     */
     public function getRoleNamesAttribute()
     {
         return $this->getRoleNames();

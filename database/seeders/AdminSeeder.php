@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class AdminSeeder extends Seeder
 {
@@ -15,10 +16,14 @@ class AdminSeeder extends Seeder
             [
                 'name' => 'Super Admin',
                 'password' => Hash::make('admin_univent'),
-                'role' => 'admin',
                 'email_verified_at' => now()
             ]
         );
-        $admin->assignRole('admin');
-        }
+        DB::table('account_roles')->insert([
+            'user_id' => $admin->id,
+            'role_id' => 1, 
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
     }
+}

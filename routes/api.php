@@ -3,11 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 
 //authentication
 Route::post('auth/register', [AuthController::class, 'register']);
@@ -24,9 +21,10 @@ Route::post('/auth/resend-otp', [AuthController::class, 'resendOtp']);
 Route::post('/password/forgot', [AuthController::class, 'forgotPassword']);
 Route::post('/password/reset', [AuthController::class, 'resetPassword']);
 
-//Google Login
-Route::get('auth/google/redirect', [AuthController::class, 'redirectToGoogle']);
-Route::get('auth/google/callback', [AuthController::class, 'handleGoogleCallback']);
+// Google Auth
+Route::get('/auth/google/redirect', [AuthController::class, 'redirectToGoogle']);
+Route::get('/auth/google/callback', [AuthController::class, 'handleGoogleCallback']);
+Route::post('/auth/google/logout', [AuthController::class, 'logoutGoogle'])->middleware('auth:sanctum');
 
 // Protected (butuh login Sanctum)
 Route::middleware('auth:sanctum')->group(function () {

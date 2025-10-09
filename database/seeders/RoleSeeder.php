@@ -3,13 +3,15 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\DB;
 
 class RoleSeeder extends Seeder
 {
     public function run(): void
     {
-        Role::firstOrCreate(['name' => 'admin']);
-        Role::firstOrCreate(['name' => 'user']);
+        DB::table('roles')->insert([
+            ['id' => 1, 'name' => 'admin', 'guard_name' => 'web'],
+            ['id' => 2, 'name' => 'user', 'guard_name' => 'web'],
+        ]);
     }
 }
