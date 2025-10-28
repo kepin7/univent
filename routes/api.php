@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\FeedbackController;
 
 //authentication
 Route::post('auth/register', [AuthController::class, 'register']);
@@ -39,3 +40,5 @@ Route::middleware(['auth:sanctum', 'checkTokenExpiry', 'admin'])->group(function
 Route::middleware(['auth:sanctum', 'checkTokenExpiry'])->group(function () {
     Route::get('/user/dashboard', [UserController::class, 'dashboard']);
 });
+
+Route::post('/feedback', [FeedbackController::class, 'store']);
