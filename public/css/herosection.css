@@ -1,0 +1,120 @@
+/* ==========================================================================
+   Hero Section Styles (Dashboard)
+   ========================================================================== */
+.hero {
+  margin-top: 60px;
+  padding: 4rem 1.5rem 2rem;
+  text-align: center;
+  max-width: 900px;
+  margin: 60px auto 0;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  color: #212529;
+}
+
+.hero .highlight-red {
+  color: #ff0000;
+}
+
+.hero p {
+  font-size: 1.125rem;
+  margin-bottom: 2.5rem;
+  color: #6c757d;
+  max-width: 700px;
+  margin: 0 auto 2.5rem;
+}
+
+.hero .btn-group {
+  display: inline-flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btn-red,
+.btn-outline-red {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.btn-red {
+  background-color: #ff0000;
+  color: #fff;
+}
+.btn-red:hover {
+  background-color: #cc0000;
+}
+
+.btn-outline-red {
+  background: transparent;
+  color: #ff0000;
+  border: 2px solid #ff0000;
+}
+.btn-outline-red:hover {
+  background-color: #ff0000;
+  color: #fff;
+}
+
+.btn-red svg {
+  fill: #fff;
+  width: 18px;
+  height: 18px;
+}
+
+.btn-outline-red svg {
+  fill: #ff0000;
+  width: 20px;
+  height: 20px;
+}
+.btn-outline-red:hover svg {
+    fill: #fff;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 3rem 1rem 1.5rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 2rem 1rem 1rem;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero p {
+        font-size: 0.9rem;
+        margin-bottom: 2rem;
+    }
+
+    .hero .btn-group {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .btn-red,
+    .btn-outline-red {
+        padding: 0.8rem 1.5rem;
+    }
+}

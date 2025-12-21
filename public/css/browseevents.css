@@ -1,0 +1,247 @@
+/* ==========================================================================
+   Browse Events Page Styles
+   ========================================================================== */
+.browse-container {
+    padding-top: 60px;
+}
+
+.browse-header {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.browse-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #212529;
+    margin: 0;
+}
+
+.browse-header p {
+    font-size: 1.1rem;
+    color: #6c757d;
+    margin-top: 0.5rem;
+    margin-bottom: auto;
+}
+
+.filter-bar {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 1.5rem;
+}
+
+.search-input {
+    position: relative;
+    flex-grow: 1;
+}
+
+.search-input input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+}
+
+.search-input svg {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    fill: #6c757d;
+}
+
+.clear-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background-color: #f8f9fa;
+    font-weight: 600;
+    color: #343a40;
+}
+
+.clear-btn:hover {
+    background-color: #e2e6ea;
+}
+
+.clear-btn svg {
+    width: 16px;
+    height: 16px;
+    fill: #343a40;
+    transition: transform 0.3s ease;
+}
+
+.clear-btn:hover svg {
+    transform: rotate(-90deg);
+}
+
+/* Custom Dropdown */
+.custom-dropdown {
+    position: relative;
+    min-width: 180px;
+    font-size: 1rem;
+    user-select: none;
+}
+
+.dropdown-selected {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.dropdown-selected .arrow {
+    width: 24px;
+    height: 24px;
+    fill: #6c757d;
+    transition: transform 0.2s ease;
+}
+
+.custom-dropdown.open .dropdown-selected .arrow {
+    transform: rotate(180deg);
+}
+
+.dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 4px;
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    list-style: none;
+    padding: 0.5rem 0;
+    display: none;
+}
+
+.custom-dropdown.open .dropdown-options {
+    display: block;
+}
+
+.dropdown-options li {
+    position: relative;
+    padding: 0.75rem 1.5rem 0.75rem 2.5rem;
+    cursor: pointer;
+}
+
+.dropdown-options li:hover {
+    background-color: #f8f9fa;
+}
+
+.dropdown-options li .checkmark {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    fill: #007bff;
+    display: none;
+}
+
+.dropdown-options li.active .checkmark {
+    display: block;
+}
+
+.dropdown-options li.active {
+    font-weight: 600;
+    color: #212529;
+}
+
+/* ==========================================================================  
+   Browse Events Section — agar sama dengan Dashboard  
+   ========================================================================== */
+.browse-container {
+    padding: 3rem 1.5rem 5rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.browse-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.browse-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #212529;
+    margin-bottom: 0.25rem;
+}
+
+.browse-header p {
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1rem;
+    color: #6c757d;
+}
+
+.cards-grid {
+    display: grid;
+    gap: 1.75rem;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 900px) {
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+}
+.card-image {
+    height: 200px;
+}
+.card,
+.card-image {
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .filter-bar {
+        flex-direction: column;
+    }
+
+    .search-input,
+    .custom-dropdown {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .browse-header h1 {
+        font-size: 2rem;
+    }
+
+    .browse-header p {
+        font-size: 1rem;
+    }
+
+    .clear-btn {
+        width: 100%;
+    }
+}

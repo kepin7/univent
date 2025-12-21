@@ -1,0 +1,175 @@
+ /* --- DASAR NAVBAR --- */
+ nav {
+     position: fixed;
+     top: 0;
+     left: 0;
+     right: 0;
+     height: 70px;
+     background: #fff;
+     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+     z-index: 1000;
+     box-sizing: border-box;
+ }
+
+ .nav-container {
+     max-width: 1200px;
+     margin: 0 auto;
+     padding: 0 20px;
+     height: 100%;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+ }
+
+ /* Logo Area */
+ .nav-left {
+     display: flex;
+     align-items: center;
+     gap: 1.5rem;
+     /* Added gap */
+ }
+
+ .nav-logo {
+     transition: transform 0.3s;
+ }
+
+ .nav-logo:hover {
+     transform: scale(1.05);
+ }
+
+ /* --- MENU DESKTOP --- */
+ .nav-menu {
+     display: flex;
+     gap: 20px;
+     align-items: center;
+ }
+
+ nav .nav-link {
+     text-decoration: none;
+     font-weight: 500;
+     color: #6c757d;
+     transition: color 0.3s;
+     font-size: 1rem;
+ }
+
+ nav .nav-link:hover,
+ nav .nav-link.active {
+     color: #ff0000;
+     font-weight: 700;
+ }
+
+ .navbar-avatar {
+     width: 35px;
+     height: 35px;
+     border-radius: 50%;
+     object-fit: cover;
+     border: 2px solid #eee;
+ }
+
+ .user-profile {
+     display: flex;
+     align-items: center;
+     gap: 10px;
+ }
+
+ /* Tombol Logout style text */
+ .btn-logout-text {
+     background: none;
+     border: none;
+     padding: 0;
+     color: #6c757d;
+     font-weight: 500;
+     font-size: 1rem;
+     cursor: pointer;
+     font-family: inherit;
+ }
+
+ .btn-logout-text:hover {
+     color: #ff0000;
+ }
+
+ /* --- HAMBURGER BUTTON (DEFAULT HIDDEN) --- */
+ .hamburger {
+     display: none;
+     flex-direction: column;
+     gap: 5px;
+     cursor: pointer;
+     padding: 10px;
+ }
+
+ .hamburger span {
+     display: block;
+     width: 28px;
+     height: 3px;
+     background: #333;
+     border-radius: 3px;
+     transition: 0.3s;
+ }
+
+ /* ANIMASI HAMBURGER JADI X */
+ .hamburger.active span:nth-child(1) {
+     transform: translateY(8px) rotate(45deg);
+     background: #ff0000;
+ }
+
+ .hamburger.active span:nth-child(2) {
+     opacity: 0;
+ }
+
+ .hamburger.active span:nth-child(3) {
+     transform: translateY(-8px) rotate(-45deg);
+     background: #ff0000;
+ }
+
+ /* --- RESPONSIVE MOBILE (LAYAR < 991px) --- */
+ @media (max-width: 991px) {
+     .hamburger {
+         display: flex;
+     }
+
+     .nav-menu {
+         display: none;
+         /* Default Hilang */
+         position: absolute;
+         top: 70px;
+         left: 0;
+         width: 100%;
+         background: #fff;
+         flex-direction: column;
+         align-items: flex-start;
+         padding: 0;
+         box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+         border-top: 1px solid #eee;
+     }
+
+     .nav-menu.active {
+         display: flex;
+     }
+
+     /* Item menu di mobile lebih lebar */
+     .nav-menu .nav-link,
+zzzz
+     .nav-menu form {
+         width: 100%;
+         padding: 15px 25px;
+         border-bottom: 1px solid #f5f5f5;
+         box-sizing: border-box;
+         display: flex;
+         align-items: center;
+     }
+
+     /* Fix tombol logout di mobile */
+     .nav-menu form {
+         margin: 0;
+     }
+
+     .nav-menu .btn-logout-text {
+         width: 100%;
+         text-align: left;
+     }
+
+     .nav-menu .nav-link:hover {
+         background: #fafafa;
+     }
+ }
+

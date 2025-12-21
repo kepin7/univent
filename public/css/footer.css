@@ -1,0 +1,62 @@
+/* ==========================================================================
+   Footer Styles
+   ========================================================================== */
+footer {
+  background-color: #b11116;
+  color: #fff;
+  padding: 3rem 1.5rem 1.5rem;
+  margin-top: auto;
+}
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5rem;
+}
+@media (max-width: 900px) {
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
+}
+.footer-col h3 {
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.footer-brand-desc {
+  font-size: 0.95rem;
+  color: #ffe5e5;
+}
+.footer-links ul,
+.footer-categories ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer-links li,
+.footer-categories li {
+  margin-bottom: 0.6rem;
+}
+.footer-links a,
+.footer-categories a {
+  color: #fff;
+}
+.footer-links a:hover,
+.footer-categories a:hover {
+  text-decoration: underline;
+}
+.footer-contact p {
+  margin: 0.3rem 0;
+}
+.footer-bottom {
+  margin-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  padding-top: 1rem;
+  text-align: center;
+  color: #eee;
+}

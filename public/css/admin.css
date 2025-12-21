@@ -1,0 +1,164 @@
+/* Style untuk Halaman Admin */
+.admin-container {
+    padding: 100px 1.5rem 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.admin-header {
+    margin-bottom: 1.5rem;
+}
+
+.admin-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.admin-header p {
+    font-size: 1.1rem;
+    color: #6c757d;
+    margin-top: 0.5rem;
+}
+
+/* Style untuk Tabel Event List */
+/* ============================================= */
+/* --- Bagian 6: Gaya Tabel Card (DIUBAH) --- */
+/* ============================================= */
+
+.event-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    margin-top: 10px;
+    font-size: 0.9em;
+
+    /* PENTING: Tambahkan ini untuk layout yang stabil */
+    table-layout: fixed;
+}
+
+/* Gaya Header (No, Event, Status, Aksi) */
+.event-table th {
+    background-color: transparent;
+    padding: 12px 10px;
+    text-align: left;
+    font-weight: 600;
+    color: #555;
+
+    /* --- UBAH BARIS INI --- */
+    /* Membuat garis pembatas lebih tebal dan terlihat */
+    border-bottom: 2px solid #e0e0e0;
+}
+
+/* Header Status & Aksi tetap rata kanan */
+.event-table th.text-right {
+    text-align: right;
+}
+
+/* Gaya Baris Konten (Card) */
+.event-table tbody tr {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.2s;
+}
+
+.event-table tbody tr:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Gaya Sel Konten di dalam Card */
+.event-table td {
+    padding: 15px 10px;
+    border-bottom: none;
+    vertical-align: middle;
+
+    /* PENTING: Tambahkan ini agar teks Event tidak tembus */
+    word-wrap: break-word;
+}
+
+/* Atur radius untuk sel pertama dan terakhir di card */
+.event-table td:first-child {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    padding-left: 15px;
+}
+
+.event-table td:last-child {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+
+/* ============================================= */
+/* --- TAMBAHAN: Atur Lebar Kolom Di Sini --- */
+/* ============================================= */
+
+
+/* Anda bisa ubah persentase/pixel di sini */
+
+.event-table th:nth-child(1),
+.event-table td:nth-child(1) {
+    width: 5%;
+    /* Lebar kolom "No" */
+}
+
+.event-table th:nth-child(2),
+.event-table td:nth-child(2) {
+    width: auto;
+    /* Lebar kolom "Event" (otomatis mengisi sisa) */
+}
+
+.event-table th:nth-child(3),
+.event-table td:nth-child(3) {
+    width: 20%;
+    /* Lebar kolom "Status" */
+}
+
+.event-table th:nth-child(4),
+.event-table td:nth-child(4) {
+    width: 25%;
+    /* Lebar kolom "Aksi" */
+}
+
+/* Style untuk Status Tag */
+.status-tag {
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: capitalize;
+}
+
+.status-pending {
+    background-color: #fff8e1;
+    color: #f59e0b;
+    border: 1px solid #fde68a;
+}
+
+.status-accepted {
+    background-color: #dcfce7;
+    color: #95E271;
+    border: 1px solid #bbf7d0;
+}
+
+.status-rejected {
+    background-color: #fee2e2;
+    color: #FF0000;
+    border: 1px solid #fecaca;
+}
+
+/* Style untuk Tombol Action */
+.action-links a {
+    font-weight: 600;
+    text-decoration: none;
+    margin-right: 1rem;
+    font-size: 0.9rem;
+}
+
+.action-links .view-link {
+    color: #007bff;
+}
+
+.action-links .export-link {
+    color: #6c757d;
+}

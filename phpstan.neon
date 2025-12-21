@@ -1,0 +1,14 @@
+includes:
+    # PATH yang BENAR untuk Larastan, menggunakan nama vendor yang sudah diinstal.
+    - ./vendor/nunomaduro/larastan/extension.neon
+
+parameters:
+    paths:
+        - app
+        
+
+    # Tingkat Analisis PHPStan (Level)
+    # 0 = Paling Santai (untuk kode warisan/legacy), 9 = Paling Ketat
+    # Mulailah dari level 0 atau 1 untuk proyek lama, lalu naikkan secara bertahap.
+    level: 9
+

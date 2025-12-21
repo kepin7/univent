@@ -1,0 +1,320 @@
+/* ======================================================================
+   REGISTRATION DETAIL – FIXED & CLEAN VERSION
+   Tampilan disesuaikan dengan screenshot yang kamu inginkan.
+   ====================================================================== */
+
+/* === Container === */
+.detail-page-container {
+    padding: 60px 1rem 60px;
+}
+
+.detail-card {
+    max-width: 850px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 3rem; /* Adjusted padding */
+    border-radius: 16px; /* Increased border-radius */
+    border: 1px solid #e5e5e5;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+}
+
+/* === Title === */
+.detail-card h1 {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+}
+
+.detail-card .subtitle {
+    color: #6c757d;
+    margin-bottom: 2.5rem; /* Increased margin */
+}
+
+/* === Back & Edit button === */
+.detail-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.back-link {
+    font-size: 14px;
+    color: #6c757d;
+    text-decoration: none;
+}
+
+.btn-edit {
+    background: #ff0000;
+    padding: 7px 16px;
+    font-size: 14px;
+    color: #fff;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* === Grid layout === */
+.detail-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem 2rem; /* Adjusted gap */
+}
+
+.grid-span-2 {
+    grid-column: 1 / -1;
+}
+
+/* === Fields === */
+.detail-field {
+    box-sizing: border-box; /* Ensure consistent box model */
+}
+
+.detail-field label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.detail-field-value {
+    width: 100%;
+    font-size: 15px;
+    padding: 10px 14px; /* Adjusted padding */
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    background: #f8f9fa; /* Light background for fields */
+    min-height: 42px; /* Adjusted min-height */
+    box-sizing: border-box;
+}
+
+/* === Status Badge === */
+.status-field .detail-field-value {
+    border: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+}
+
+.status-badge {
+    font-size: 13px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.status-pending {
+    background: #ffffff;
+    color: #FFC107;
+    border: 1px solid #FFC107;
+    padding: 6px 12px;
+    border-radius: 30px;
+    display: inline-block;
+}
+
+.status-approved {
+    background: #95E271;
+    color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 30px;
+    display: inline-block;
+}
+
+
+.status-rejected {
+    background: #FF0000;
+    color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 30px;
+    display: inline-block;
+}
+
+/* === Organizer Badge === */
+.organizer-value {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+}
+
+.organizer-field .organizer-value {
+    text-align: center;
+}
+
+.organizer-badge {
+    padding: 4px 12px;
+    font-size: 13px;
+    border-radius: 30px;
+    background: #fcebeb;
+    color: #d9534f;
+    border: 1px solid #f5c2c7;
+}
+
+/* === Description field === */
+.detail-description .detail-field-value {
+    min-height: 90px;
+}
+
+/* === Poster === */
+.poster-preview {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+}
+
+.event-poster-image {
+    width: 200px;
+    border-radius: 8px;
+    display: block;
+}
+
+/* === Schedule Layout Fix === */
+.date-field .detail-field-value {
+    max-width: 180px;
+}
+
+.time-field .detail-field-value {
+    max-width: 120px;
+}
+
+/* Fix Organizer Name alignment */
+.organizer-field .detail-field-value {
+    display: flex !important;
+    align-items: flex-start !important;
+    /* biar teks mulai dari atas */
+    padding: 10px 12px !important;
+    /* kasih padding biar rapi */
+    min-height: 38px;
+    /* minimal agar tetap seragam */
+    height: auto !important;
+    /* bisa membesar */
+    line-height: 1.3;
+}
+
+.organizer-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    white-space: normal !important;
+    /* biar bisa multi-line */
+    word-break: break-word;
+    /* pecah kata panjang */
+    text-align: center;
+}
+
+/* Event Title custom typography */
+.event-title-field label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #000;
+}
+
+.event-title-value {
+    font-size: 24px;
+    /* besar seperti gambar */
+    font-weight: 700;
+    /* bold */
+    color: #555;
+    /* abu-abu gelap */
+    line-height: 1.2;
+    padding: 0;
+    /* hilangkan padding */
+    border: none;
+    /* hilangkan border */
+    background: none;
+}
+
+.back-btn-pill {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 0.6rem 1.2rem;
+    border-radius: 999px;
+    background-color: #f1f3f5;
+
+
+
+    font-size: 14px;
+    font-weight: 600;
+    color: #495057;
+
+    text-decoration: none;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.back-btn-pill:hover {
+    background-color: #e9ecef;
+    color: #212529;
+}
+
+.back-btn-pill:hover svg {
+    fill: #212529;
+   
+}
+
+/* === Mobile === */
+@media (max-width: 768px) {
+    .detail-page-container {
+        padding: 40px 1rem 40px;
+    }
+
+    .detail-card {
+        padding: 2rem;
+    }
+
+    .detail-content-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+
+    .date-field .detail-field-value,
+    .time-field .detail-field-value {
+        max-width: 100%;
+    }
+
+    .event-poster-image {
+        width: 100%;
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .detail-card {
+        padding: 1.5rem;
+    }
+
+    .detail-card h1 {
+        font-size: 22px;
+    }
+
+    .detail-card .subtitle {
+        font-size: 14px;
+        margin-bottom: 1.5rem;
+    }
+
+    .detail-field label {
+        font-size: 13px;
+    }
+
+    .detail-field-value {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+    .event-title-value {
+        font-size: 20px;
+    }
+
+    .event-poster-image {
+        max-width: 100%;
+    }
+
+    .back-btn-pill {
+        padding: 0.5rem 1rem;
+        font-size: 13px;
+    }
+
+    .btn-edit {
+        padding: 6px 14px;
+        font-size: 13px;
+    }
+}

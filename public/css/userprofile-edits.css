@@ -1,0 +1,353 @@
+/* ==========================================================================
+   User Profile Page Styles (View & Edit)
+   ========================================================================== */   
+.profile-page-container {
+  padding: 100px 1rem 50px;
+}
+
+.profile-card {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 2.5rem;
+  border-radius: 16px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+  display: flex;
+  align-items: flex-start;
+  gap: 3rem;
+}
+
+.profile-sidebar {
+  flex-basis: 200px;
+  text-align: center;
+  flex-shrink: 0;
+  position: relative; /* Diperlukan untuk input file */
+}
+
+.profile-avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+}
+
+/* === INI MEMPERBAIKI MASALAH CENTERING ICON === */
+.profile-avatar.default-avatar-icon {
+    background-color: #f8f9fa; 
+    display: flex; /* Menggunakan flexbox */
+    justify-content: center; /* Rata tengah horizontal */
+    align-items: center; /* Rata tengah vertikal */
+    overflow: hidden;
+    border: 4px solid #fff; 
+}
+.profile-avatar.default-avatar-icon svg {
+    width: 100px; 
+    height: 100px;
+    fill: #ced4da; 
+}
+/* === AKHIR PERBAIKAN CENTERING === */
+
+
+.profile-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #212529;
+}
+
+.profile-main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-main h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.profile-details {
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid #e9ecef;
+}
+
+.profile-detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.profile-detail-item:not(:last-child) {
+  margin-bottom: 1.5rem;
+}
+
+.detail-icon {
+  width: 20px;
+  height: 20px;
+  fill: #ff0000;
+  margin-top: 4px;
+}
+
+.detail-text span {
+  font-size: 14px;
+  color: #6c757d;
+  display: block;
+}
+
+.detail-text p {
+  font-size: 16px;
+  font-weight: 500;
+  color: #212529;
+}
+
+.profile-details.edit-mode input[type="email"],
+.profile-details.edit-mode input[type="date"],
+.profile-details.edit-mode input[type="tel"] {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 16px;
+  font-family: inherit;
+  margin-top: 2px;
+}
+
+.profile-actions {
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;     
+    gap: 1rem;                
+    margin-top: 1.5rem;
+}
+
+.profile-actions a.btn-edit-profile,
+.profile-actions form {
+    display: inline-block;  
+    vertical-align: middle; 
+    margin: 0;
+}
+
+.profile-actions a.btn-edit-profile {
+    margin-right: 1rem; 
+}
+
+.btn-edit-profile {
+  background-color: #ff0000;
+  color: #fff;
+  padding: 0.6rem 1.5rem;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  border: 1px solid transparent;
+  line-height: 1.5;
+  font-size: 1rem;
+}
+
+.btn-edit-profile:hover {
+  background-color: #cc0000;
+}
+
+.btn-logout {
+  background-color: #fff;
+  color: #ff0000;
+  padding: 0.6rem 1.5rem;
+  font-weight: 600;
+  border-radius: 6px;
+  border: 1px solid #ff0000;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.btn-logout:hover {
+  background-color: #ffeeee;
+}
+
+.btn-save-profile {
+  background-color: #ff0000;
+  color: #fff;
+  padding: 0.6rem 1.5rem;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-save-profile:hover {
+  background-color: #cc0000;
+}
+
+.btn-cancel-edit {
+  background-color: transparent;
+  color: #6c757d;
+  padding: 0.6rem 1.5rem;
+  font-weight: 600;
+  border-radius: 6px;
+  border: 1px solid #ced4da;
+  text-decoration: none;
+}
+
+.btn-cancel-edit:hover {
+  background-color: #f8f9fa;
+}
+
+/* === CSS UNTUK TOMBOL UPLOAD & REMOVE BARU === */
+.avatar-actions {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.btn-change-photo {
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    background-color: #e9ecef;
+    color: #495057;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border: none; /* Tambahkan ini agar terlihat seperti tombol */
+}
+.btn-change-photo:hover {
+    background-color: #dee2e6;
+}
+
+/* Tombol ini adalah <label> yang memicu input file */
+.label-change-photo {
+    /* Sama dengan .btn-change-photo */
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    background-color: #e9ecef;
+    color: #495057;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+.label-change-photo:hover {
+    background-color: #dee2e6;
+}
+
+/* Input file yang disembunyikan */
+#avatar-upload-input {
+    display: none;
+}
+
+/* Tombol "Remove" adalah form kecil */
+.btn-remove-photo {
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    background: none;
+    border: 1px solid #f8d7da;
+    color: #721c24;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+.btn-remove-photo:hover {
+    background-color: #f8d7da;
+}
+
+@media (max-width: 768px) {
+  .profile-page-container {
+    padding: 80px 1rem 30px;
+  }
+
+  .profile-card {
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    gap: 2rem;
+  }
+
+  .profile-main h2 {
+    font-size: 20px;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .profile-name {
+    font-size: 1.1rem;
+  }
+
+  .profile-actions {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .btn-save-profile,
+  .btn-cancel-edit {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-page-container {
+    padding: 60px 0.5rem 20px;
+  }
+
+  .profile-card {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .profile-avatar {
+    width: 120px;
+    height: 120px;
+  }
+
+  .profile-main h2 {
+    font-size: 18px;
+    margin-bottom: 1rem;
+  }
+
+  .profile-name {
+    font-size: 1rem;
+  }
+
+  .profile-details {
+    padding: 1rem;
+  }
+
+  .profile-detail-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .detail-text span {
+    font-size: 12px;
+  }
+
+  .detail-text p,
+  .profile-details.edit-mode input {
+    font-size: 14px;
+  }
+
+  .avatar-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .label-change-photo,
+  .btn-remove-photo {
+    width: 100%;
+    text-align: center;
+  }
+}

@@ -1,0 +1,228 @@
+/* --- Bagian 1: Navigasi Tab (TIDAK BERUBAH) --- */
+.admin-nav-tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ddd;
+}
+
+.admin-nav-tabs button {
+    padding: 10px 20px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 16px;
+    transition: border-bottom 0.2s;
+}
+
+.admin-nav-tabs button.active {
+    border-bottom: 3px solid #e74c3c;
+    font-weight: bold;
+    color: #e74c3c;
+}
+
+/* --- Bagian 2: Konten Tab (TIDAK BERUBAH) --- */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* --- Bagian 3: Status Tag (TIDAK BERUBAH) --- */
+.status-tag {
+    /* Gaya dasar baru: lebih membulat */
+    padding: 2px 19px;
+    border-radius: 14px;
+    font-size: 0.85em;
+    font-weight: bold;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Status Pending: Diubah menjadi Border Kuning */
+.status-pending {
+    background-color: transparent;
+    /* Latar belakang transparan */
+    border: 2px solid #ffc107;
+    /* Garis tepi kuning */
+    color: #ffc107;
+}
+
+/* Status Approved (tetap solid) */
+.status-approved {
+    background-color: #95E271;
+    color: white;
+}
+
+/* Status Rejected (tetap solid) */
+.status-rejected {
+    background-color: #FF0000;
+    color: white;
+}
+
+
+/* ======================================================= */
+/* --- BAGIAN 4: TOMBOL AKSI (DIPERBARUI SESUAI GAMBAR) --- */
+/* ======================================================= */
+.text-right {
+    text-align: right;
+}
+
+/* Penampung untuk tombol-tombol agar sejajar */
+.action-container {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    /* Memberi jarak antar tombol */
+}
+
+/* Gaya dasar untuk tombol (Accept & Reject) */
+.action-button {
+    display: inline-block;
+    padding: 6px 14px;
+    border: none;
+    border-radius: 20px;
+    /* Bentuk pil (sangat membulat) */
+    font-size: 0.9em;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    line-height: 1.2;
+    vertical-align: middle;
+    color: white;
+    /* Teks putih untuk kedua tombol */
+}
+
+/* Tombol Accept: Hijau muda solid, teks putih */
+.action-accept {
+    background-color: #95E271;
+    /* Warna hijau muda dari gambar */
+}
+
+/* Tombol Reject: Merah solid, teks putih */
+.action-reject {
+    background-color: #FF0000;
+    /* Warna merah solid dari gambar */
+}
+
+/* Link View: Teks biru */
+.action-view {
+    color: #007bff;
+    /* Biru standar */
+    font-size: 0.9em;
+    font-weight: 500;
+    /* Tidak perlu bold */
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+/* --- Bagian 6: Gaya Tabel (SESUAI GAMBAR) --- */
+
+.event-table {
+    width: 100%;
+    border-collapse: collapse;
+    /* Menghilangkan spasi antar border */
+    margin-top: 20px;
+    font-size: 0.9em;
+}
+
+/* Gaya Header (No, Event, Status, Aksi) */
+.event-table th {
+    background-color: #f8f9fa;
+    /* Latar belakang abu-abu sangat muda */
+    padding: 12px 10px;
+    text-align: left;
+    font-weight: 600;
+    /* Dibuat tebal */
+    color: #333;
+    border-bottom: 2px solid #dee2e6;
+}
+
+/* Gaya Baris Konten */
+.event-table td {
+    padding: 12px 10px;
+    border-bottom: 1px solid #eee;
+    /* Garis pemisah tipis antar baris */
+    vertical-align: middle;
+}
+.text-right {
+    text-align: right;
+}
+
+@media (max-width: 768px) {
+    .admin-nav-tabs {
+        flex-wrap: wrap;
+    }
+
+    .admin-nav-tabs button {
+        flex-basis: 50%;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .event-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 480px) {
+    .admin-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .admin-nav-tabs button {
+        flex-basis: 100%;
+        padding: 12px 5px;
+        font-size: 14px;
+    }
+
+    .event-table th,
+    .event-table td {
+        padding: 8px 6px;
+        font-size: 0.85em;
+    }
+
+    .action-container {
+        flex-direction: column;
+        gap: 5px;
+        align-items: flex-end;
+    }
+}
+.action-delete {
+    background: #FF0000;
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 999px;
+}
+
+.action-delete:hover {
+    background: #d70019;
+}
+
+.sw-confirm-btn {
+    background-color: #6366f1 !important; /* ungu */
+    color: white !important;
+    border-radius: 6px !important;
+    padding: 10px 20px !important;
+    font-weight: 600 !important;
+    border: none !important;
+    margin: 0 8px;
+}
+
+.sw-cancel-btn {
+    background-color: #6b7280 !important; /* abu abu */
+    color: white !important;
+    border-radius: 6px !important;
+    padding: 10px 20px !important;
+    font-weight: 600 !important;
+    border: none !important;
+    margin: 0 8px;
+}
+
+.swal2-popup {
+    border-radius: 16px !important;
+    padding: 2rem 2rem !important;
+}

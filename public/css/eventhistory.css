@@ -1,0 +1,230 @@
+/* ==========================================================================
+   Event History Page Styles
+   ========================================================================== */
+.history-page-container {
+    padding: 100px 1rem 50px;
+}
+
+.history-card {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 2.5rem;
+    border-radius: 16px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+}
+
+.history-card h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #212529;
+    margin-bottom: 0.5rem;
+}
+
+.history-card .subtitle {
+    font-size: 16px;
+    color: #6c757d;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+/* --- Daftar Registrasi --- */
+
+.registration-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Jarak antar item riwayat */
+}
+
+.registration-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border: 1px solid #e9ecef;
+    border-radius: 10px;
+    transition: box-shadow 0.2s ease;
+}
+
+.registration-item:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.event-info h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #00000; /* Judul Event dengan warna merah Univent */
+    margin-bottom: 0.25rem;
+    max-width: 600px;
+}
+
+.event-info p {
+    font-size: 14px;
+    color: #495057;
+    line-height: 1.6;
+}
+
+.event-info .date span {
+    font-weight: 500;
+    color: #333;
+}
+
+/* --- Status Registrasi --- */
+
+.event-info .status {
+    font-size: 14px;
+}
+
+.status-approved {
+    font-weight: 700;
+    color: #95E271;
+    /* Hijau untuk status berhasil/disetujui */
+}
+
+.status-pending {
+    background-color: #fff8e1;
+    color: #f59e0b;
+    border: 1px solid #fde68a;
+}
+
+/* 🆕 TAMBAHAN: STATUS DITOLAK (REJECTED) */
+.status-rejected {
+    font-weight: 700;
+    color: #FF0000;
+    /* Merah untuk status ditolak */
+}
+
+/* --- Tombol Detail --- */
+
+.btn-detail {
+    background-color: #f8f9fa;
+    color: #343a40;
+    padding: 0.6rem 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.btn-detail:hover {
+    background-color: #e9ecef;
+}
+
+@media (max-width: 768px) {
+    .registration-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .item-actions {
+        width: 100%;
+    }
+
+    .btn-detail {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* --- Empty State --- */
+
+.empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    border: 1px dashed #ced4da;
+    margin-top: 2rem;
+}
+
+.empty-state p {
+    font-size: 18px;
+    color: #6c757d;
+    margin-bottom: 1.5rem;
+}
+
+.btn-primary {
+    /* Mengikuti style tombol utama (merah) */
+    background-color: #ff0000;
+    color: #fff;
+    padding: 0.8rem 2rem;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+    display: inline-block;
+}
+
+.btn-primary:hover {
+    background-color: #cc0000;
+}
+
+@media (max-width: 768px) {
+    .history-page-container {
+        padding: 80px 1rem 30px;
+    }
+
+    .history-card {
+        padding: 2rem;
+    }
+
+    .history-card h1 {
+        font-size: 24px;
+    }
+
+    .history-card .subtitle {
+        font-size: 14px;
+    }
+
+    .registration-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .item-actions {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
+@media (max-width: 480px) {
+    .history-card {
+        padding: 1.5rem;
+    }
+
+    .history-card h1 {
+        font-size: 20px;
+    }
+
+    .history-card .subtitle {
+        font-size: 12px;
+    }
+
+    .event-info h3 {
+        font-size: 16px;
+    }
+
+    .event-info p {
+        font-size: 12px;
+    }
+
+    .btn-detail {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .empty-state p {
+        font-size: 16px;
+    }
+
+    .btn-primary {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}

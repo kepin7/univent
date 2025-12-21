@@ -1,0 +1,211 @@
+/* =========================================
+   1. RESET & LAYOUT DASAR
+   ========================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background-color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 20px;
+}
+
+/* --- LOGO (DEFAULT DESKTOP: POJOK KIRI ATAS) --- */
+.logo-container {
+    position: absolute;
+    top: 40px;
+    left: 60px;
+    z-index: 10;
+}
+
+.logo {
+    height: 45px;
+}
+
+/* --- CONTAINER UTAMA --- */
+.login-container {
+    width: 100%;
+    max-width: 480px;
+    padding: 10px;
+    text-align: center;
+}
+
+/* --- TYPOGRAPHY --- */
+h1 {
+    font-size: 28px;
+    color: #000;
+    margin-bottom: 15px;
+    font-weight: 600;
+    text-align: left;
+}
+
+.verification-text {
+    color: #6c757d;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+    text-align: left;
+    font-size: 15px;
+}
+
+.verification-text strong {
+    color: #212529;
+    font-weight: 600;
+}
+
+/* --- FORM ELEMENTS --- */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    text-align: left;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* --- KOTAK OTP (RESPONSIF) --- */
+.code-inputs {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.code-inputs input {
+    width: 100%; /* Lebar fleksibel */
+    max-width: 50px; /* Maksimal 50px di desktop */
+    height: 55px;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 0;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background: #fff;
+}
+
+.code-inputs input:focus {
+    border-color: #ff0000;
+    box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.1);
+}
+
+.helper-text {
+    text-align: left;
+    font-size: 13px;
+    color: #6c757d;
+    margin-top: 8px;
+}
+
+/* --- TOMBOL VERIFY (MERAH) --- */
+.btn-verify {
+    width: 100%;
+    padding: 14px;
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    border-radius: 50px; /* Pill shape */
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 10px;
+}
+
+.btn-verify:hover {
+    background-color: #cc0000;
+}
+
+/* --- LINK RESEND --- */
+.resend-link {
+    font-size: 14px;
+    color: #6c757d;
+    margin-top: 2rem;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.resend-form {
+    display: inline;
+}
+
+.resend-button {
+    background: none;
+    border: none;
+    color: #007bff;
+    font-weight: 600;
+    padding: 0;
+    font-size: inherit;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: inherit;
+}
+
+.resend-button:hover {
+    text-decoration: underline;
+}
+
+.spam-note {
+    font-size: 12px;
+    color: #6c757d;
+    margin-top: 0.5rem;
+    text-align: left;
+}
+
+/* =========================================
+   2. RESPONSIVE QUERY (MOBILE & TABLET)
+   ========================================= */
+@media (max-width: 768px) {
+    /* Logo pindah dari pojok ke tengah */
+    .logo-container {
+        position: static; /* Lepas dari posisi absolute */
+        margin-bottom: 30px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .login-container {
+        padding: 0 15px;
+    }
+
+    /* Judul sedikit mengecil */
+    h1 {
+        font-size: 26px;
+    }
+
+    /* Input OTP menyesuaikan layar sempit */
+    .code-inputs {
+        gap: 8px; /* Jarak diperkecil */
+    }
+
+    .code-inputs input {
+        height: 50px;
+        font-size: 1.25rem;
+        max-width: none; /* Hilangkan batas lebar agar memenuhi flex container */
+    }
+}
+
+/* Layar HP Sangat Kecil (iPhone SE lama / Fold) */
+@media (max-width: 360px) {
+    .code-inputs {
+        gap: 5px;
+    }
+    .code-inputs input {
+        height: 45px;
+        font-size: 1.1rem;
+    }
+}

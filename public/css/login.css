@@ -1,0 +1,277 @@
+/* Reset & Font Dasar */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.login-header {
+    position: absolute;
+    top: 2rem;
+    left: 5rem;
+}
+
+.logo {
+    height: 45px;
+}
+
+.login-main {
+    width: 100%;
+}
+
+.login-container {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #212529;
+    margin-bottom: 0.5rem;
+}
+
+.signup-link {
+    color: #6c757d;
+    margin-bottom: 2rem;
+}
+
+.signup-link a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #343a40;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.password-icon {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    fill: #6c757d;
+    cursor: pointer;
+}
+
+.btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-login {
+    background-color: #ff0000;
+    color: #fff;
+    margin-top: 0.5rem;
+}
+
+.btn-login:hover {
+    background-color: #cc0000;
+}
+
+.forgot-password {
+    display: block;
+    text-align: left;
+    margin-top: 1rem;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #6c757d;
+    margin: 2rem 0;
+}
+
+.divider span {
+    flex-grow: 1;
+    border-bottom: 1px solid #ced4da;
+}
+
+.divider p {
+    padding: 0 1rem;
+}
+
+.btn-google {
+    background-color: #f8f9fa;
+    color: #343a40;
+    border: 1px solid #ced4da;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+}
+
+.btn-google:hover {
+    background-color: #e9ecef;
+}
+
+.btn-google svg {
+    width: 20px;
+    height: auto;
+}
+
+.welcome-text {
+    color: #6c757d;
+    margin-bottom: 2rem;
+}
+
+.helper-text {
+    font-size: 12px;
+    color: #6c757d;
+    margin-top: 0.5rem;
+    text-align: left;
+}
+
+.terms-text {
+    font-size: 12px;
+    color: #6c757d;
+    margin-top: 2rem;
+    line-height: 1.6;
+}
+.remember-container {
+    display: flex;
+    align-items: center;
+    /* sejajar vertikal */
+    justify-content: flex-start;
+    /* rata kiri */
+}
+
+.remember-container input {
+    margin-right: 6px;
+    /* jarak checkbox dan teks */
+}
+/* ============================
+   RESPONSIVE
+   ============================ */
+
+/* Tablet (≤ 768px) */
+@media (max-width: 768px) {
+    .login-header {
+        left: 2rem;
+        top: 1.5rem;
+    }
+
+    .login-container {
+        max-width: 350px;
+        padding: 0 1rem;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .btn,
+    .form-group input {
+        font-size: 15px;
+        padding: 12px;
+    }
+}
+
+/* Smartphone (≤ 480px) */
+@media (max-width: 480px) {
+
+    body {
+        align-items: flex-start;
+        /* biar form tidak terlalu tertekan tengah */
+        padding-top: 5rem;
+    }
+
+    .login-header {
+        left: 1rem;
+        top: 1rem;
+    }
+
+    .logo {
+        height: 36px;
+    }
+
+    .login-container {
+        max-width: 100%;
+        padding: 0 1.2rem;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    .signup-link,
+    .welcome-text {
+        font-size: 14px;
+    }
+
+    .form-group label {
+        font-size: 14px;
+    }
+
+    .form-group input {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+
+    .btn {
+        padding: 12px;
+        font-size: 15px;
+    }
+
+    .btn-google {
+        gap: 0.5rem;
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .divider {
+        margin: 1.5rem 0;
+    }
+}

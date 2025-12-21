@@ -1,0 +1,185 @@
+/* ==========================================================================  
+   Navbar Styles - Responsive & Clean
+   ========================================================================== */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    user-select: none;
+    box-sizing: border-sizing;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Logo di kiri, Menu/Hamburger di kanan */
+}
+
+/* --- Logo --- */
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    /* Added gap for spacing between logo and Home link */
+}
+
+.nav-logo {
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.nav-logo:hover {
+    transform: scale(1.05);
+}
+
+/* --- Desktop Menu (Default) --- */
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+nav .nav-link {
+    text-decoration: none;
+    font-weight: 500;
+    color: #6c757d;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+nav .nav-link:hover {
+    color: #ff0000;
+}
+
+nav .nav-link.active {
+    color: #ff0000;
+    font-weight: 700;
+}
+
+/* Avatar & Profile */
+.navbar-avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #eee;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ===========================
+   HAMBURGER BUTTON (Untuk Mobile)
+   =========================== */
+.hamburger {
+    display: none;
+    /* Tersembunyi di Desktop */
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 5px;
+}
+
+.hamburger span {
+    display: block;
+    width: 28px;
+    height: 3px;
+    background: #333;
+    border-radius: 3px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Efek Animasi Menjadi X */
+.hamburger.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+    background: #ff0000;
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+    background: #ff0000;
+}
+
+
+/* ===========================
+   MOBILE & TABLET RESPONSIVE (≤ 991px)
+   =========================== */
+@media (max-width: 991px) {
+
+    nav {
+        height: 65px;
+    }
+
+    .hamburger {
+        display: flex;
+        /* Tampilkan tombol hamburger */
+    }
+
+    /* Sembunyikan menu desktop, ubah jadi dropdown mobile */
+    .nav-menu {
+        position: fixed;
+        top: 65px;
+        /* Harus sama dengan tinggi nav */
+        left: 0;
+        width: 100%;
+        height: 0;
+        background: #ffffff;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        overflow: hidden;
+        transition: height 0.4s ease-in-out;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Class ini ditambahkan via JS saat hamburger diklik */
+    .nav-menu.active {
+        height: auto;
+        /* Tinggi otomatis menyesuaikan isi menu */
+        padding-bottom: 1rem;
+        border-top: 1px solid #f1f1f1;
+    }
+
+    .nav-menu .nav-link {
+        width: 100%;
+        padding: 15px 25px;
+        border-bottom: 1px solid #f5f5f5;
+        font-size: 1.05rem;
+        color: #333;
+        display: block;
+        box-sizing: border-box;
+        /* Agar padding tidak merusak lebar */
+    }
+
+    .nav-menu .user-profile {
+        padding: 15px 25px;
+        width: 100%;
+        justify-content: flex-start;
+        border-bottom: 1px solid #f5f5f5;
+    }
+
+    .nav-menu .nav-link:hover {
+        background-color: #fff5f5;
+        /* Highlight merah muda tipis saat disentuh */
+        color: #ff0000;
+    }
+}

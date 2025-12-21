@@ -1,0 +1,210 @@
+/* ==========================================================================
+   Event Cards & Section Styles (Shared)
+   ========================================================================== */
+section.upcoming-events {
+    padding: 1rem 1.5rem 5rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+section.upcoming-events h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: #212529;
+    text-align: center;
+}
+
+section.upcoming-events p.description {
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+    font-size: 1rem;
+    color: #6c757d;
+    text-align: center;
+}
+
+.cards-grid {
+    display: grid;
+    gap: 1.75rem;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 900px) {
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 600px) {
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* .card-image {
+  background-color: #111;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 160px;
+} */
+.card-image {
+    background-color: #111;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    /* bisa lebih tinggi sesuai kebutuhan */
+}
+
+/* .card-image img {
+  height: 50px;
+  width: auto;
+  opacity: 0.8;
+} */
+.card-image img {
+    width: 100%;
+    /* gambar mengisi lebar card */
+    height: 100%;
+    /* gambar mengisi tinggi card */
+    object-fit: cover;
+    /* crop otomatis agar proporsional */
+    display: block;
+}
+.card-content {
+    padding: 1rem 1.25rem 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.tags {
+    margin-bottom: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.15rem 0.6rem;
+    border-radius: 9999px;
+}
+
+.tag-green {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.tag-pink {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0.25rem 0 0.5rem;
+    color: #212529;
+}
+
+.card-desc {
+    font-size: 0.95rem;
+        color: #6c757d;
+        flex-grow: 1;
+    
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        /* jumlah baris */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+}
+
+.card-meta {
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.card-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.card-info svg {
+    width: 16px;
+    height: 16px;
+    fill: #ff0000;
+}
+
+.btn-details {
+    background-color: #ff0000;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    border-radius: 6px;
+    text-align: center;
+    width: 100%;
+    margin-top: auto;
+    transition: background-color 0.2s ease;
+}
+
+.btn-details:hover {
+    background-color: #cc0000;
+}
+
+section.browse-events {
+    padding: 1rem 1.5rem 5rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+section.browse-events .cards-grid {
+    display: grid;
+    gap: 1.75rem;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 900px) {
+    section.browse-events .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    section.browse-events .cards-grid {
+        grid-template-columns: 1fr;
+    }
+}
+section.browse-events .card {
+    height: auto;
+}
+
+section.browse-events .card-image {
+    height: 200px; 
+}

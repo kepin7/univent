@@ -1,0 +1,179 @@
+/* ==========================================================================
+   Contact Page Styles
+   ========================================================================== */
+.contact-page-container {
+  padding: 100px 1rem 50px;
+}
+
+.contact-card {
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: #fff;
+  color: #212529;
+  padding: 3rem;
+  border-radius: 16px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+  display: flex;
+  gap: 3rem; 
+}
+
+.contact-form-section {
+  flex: 1.5; 
+}
+
+.contact-info-section {
+  flex: 1; 
+}
+
+.contact-card h2 {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.contact-info-section h3 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.info-items {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.info-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ffeeee; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.info-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: #ff0000;
+}
+
+.info-text h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.info-text p {
+  font-size: 14px;
+  color: #6c757d;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .contact-page-container {
+    padding: 80px 1rem 30px;
+  }
+
+  .contact-card {
+    flex-direction: column;
+    padding: 2rem;
+    gap: 2rem;
+  }
+
+  .contact-card h2 {
+    font-size: 24px;
+  }
+
+  .contact-info-section h3 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-card {
+    padding: 1.5rem;
+  }
+
+  .contact-card h2 {
+    font-size: 20px;
+  }
+
+  .contact-info-section h3 {
+    font-size: 18px;
+  }
+
+  .info-text h4 {
+    font-size: 14px;
+  }
+
+  .info-text p {
+    font-size: 12px;
+  }
+
+  .info-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .info-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.form-group label::after {
+  content: " *";
+  color: #ff0000;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: inherit;
+    background-color: #fff;
+    color: #212529;
+    resize: none;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #ff0000;
+  color: #fff;
+  margin-top: 1.5rem;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-submit:hover {
+  background-color: #cc0000;
+}
